@@ -26,11 +26,12 @@ public class transaksiview extends javax.swing.JFrame {
         controller controller;
         ArrayList<detail_transaksi> arrKeranjang;
         Double Harga_Total;
+        Integer role;
     /**
      * Creates new form Transaksi
      * @throws java.sql.SQLException
      */
-    public transaksiview() throws SQLException {
+    public transaksiview(int role) throws SQLException {
         initComponents();
         this.controller = new controller();
         this.arrKeranjang = new ArrayList<>();
@@ -39,6 +40,10 @@ public class transaksiview extends javax.swing.JFrame {
         this.showComboBoxProduk();
         this.showTabelKeranjang();
         this.showTabelTransaksi();
+        this.role = role;
+        if(this.role == 1){
+            jMenu3.show(false);
+        }
     }
     
     private void showComboBoxPegawai() throws SQLException {
@@ -286,6 +291,7 @@ public class transaksiview extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
@@ -353,7 +359,7 @@ public class transaksiview extends javax.swing.JFrame {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
             try {
                 // TODO add your handling code here:
-                new form_barang().show();
+                new form_barang(role).show();
             } catch (SQLException ex) {
                 Logger.getLogger(transaksiview.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -363,51 +369,13 @@ public class transaksiview extends javax.swing.JFrame {
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
         try {
-            new form_pegawai().show();
+            new form_pegawai(role).show();
         } catch (SQLException ex) {
             Logger.getLogger(form_barang.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_jMenu3MouseClicked
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Transaksiview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Transaksiview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Transaksiview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Transaksiview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new Transaksiview().setVisible(true);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(Transaksiview.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLihatDetail;

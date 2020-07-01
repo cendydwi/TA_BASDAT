@@ -27,15 +27,20 @@ import model.barang;
  */
 public class form_pegawai extends javax.swing.JFrame {
     controller controller;
+    Integer role;
 
     /**
      * Creates new form form_barang
      */
-    public form_pegawai() throws SQLException {
+    public form_pegawai(int role) throws SQLException {
         initComponents();
         this.controller = new controller();
         this.showTabelPegawai();
         this.hidden_id.hide();
+        this.role = role;
+        if(this.role == 1){
+            jMenu3.show(false);
+        }
     }
     
     private void showTabelPegawai() throws SQLException{
@@ -258,11 +263,12 @@ public class form_pegawai extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         try {
-            new transaksiview().show();
+            new transaksiview(role).show();
         } catch (SQLException ex) {
             Logger.getLogger(form_pegawai.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -293,6 +299,7 @@ public class form_pegawai extends javax.swing.JFrame {
                 pegawai.setRole(cbRole.getSelectedIndex());
                 this.controller.insertPegawai(pegawai);
                 this.showTabelPegawai();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -305,6 +312,7 @@ public class form_pegawai extends javax.swing.JFrame {
                 pegawai.setId_pegawai(Integer.parseInt(hidden_id.getText()));
                 this.controller.deletePegawai(pegawai);
                 this.showTabelPegawai();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -323,6 +331,7 @@ public class form_pegawai extends javax.swing.JFrame {
                 pegawai.setRole(cbRole.getSelectedIndex());
                 this.controller.editPegawai(pegawai);
                 this.showTabelPegawai();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -331,13 +340,20 @@ public class form_pegawai extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         try {
-            new form_barang().show();
+            new form_barang(role).show();
         } catch (SQLException ex) {
             Logger.getLogger(form_pegawai.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void kosong(){
+        tfNama.setText("");
+        tfNo_telp.setText("");
+        tfPass.setText("");
+        tfUser.setText("");
+        taAlamat.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbRole;

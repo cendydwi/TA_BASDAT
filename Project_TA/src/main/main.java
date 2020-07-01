@@ -7,6 +7,7 @@ package main;
 
 import java.sql.SQLException;
 import view.form_pegawai;
+import view.login;
 import view.transaksiview;
 
 /**
@@ -18,7 +19,7 @@ public class main {
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
 //
-        new transaksiview().show();
+        new login().show();
     }
     
 }

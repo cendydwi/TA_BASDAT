@@ -27,16 +27,21 @@ import model.barang;
  */
 public class form_barang extends javax.swing.JFrame {
     controller controller;
+    Integer role;
 
     /**
      * Creates new form form_barang
      */
-    public form_barang() throws SQLException {
+    public form_barang(int role) throws SQLException {
         initComponents();
         this.controller = new controller();
         this.showComboBoxPegawai();
         this.showTabelBarang();
         this.hidden_id.hide();
+        this.role = role;
+        if(this.role == 1){
+            jMenu3.show(false);
+        }
     }
     
     private void showComboBoxPegawai() throws SQLException {
@@ -230,11 +235,12 @@ public class form_barang extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         try {
-            new transaksiview().show();
+            new transaksiview(role).show();
         } catch (SQLException ex) {
             Logger.getLogger(form_barang.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -261,6 +267,7 @@ public class form_barang extends javax.swing.JFrame {
                 barang.setStok(Integer.parseInt(this.tfStok.getText()));
                 this.controller.insertBarang(barang);
                 this.showTabelBarang();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -273,6 +280,7 @@ public class form_barang extends javax.swing.JFrame {
                 barang.setId_barang(Integer.parseInt(hidden_id.getText()));
                 this.controller.deleteBarang(barang);
                 this.showTabelBarang();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -289,6 +297,7 @@ public class form_barang extends javax.swing.JFrame {
                 barang.setStok(Integer.parseInt(this.tfStok.getText()));
                 this.controller.editBarang(barang);
                 this.showTabelBarang();
+                this.kosong();
             } catch (SQLException err) {
                 System.out.println(err);
             }
@@ -298,13 +307,18 @@ public class form_barang extends javax.swing.JFrame {
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
         try {
-            new form_pegawai().show();
+            new form_pegawai(role).show();
         } catch (SQLException ex) {
             Logger.getLogger(form_barang.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_jMenu3MouseClicked
 
+    private void kosong(){
+        tfHarga.setText("");
+        tfNama.setText("");
+        tfStok.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbPegawai;

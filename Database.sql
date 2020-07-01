@@ -110,21 +110,3 @@ TRANSAKSI.* FROM TRANSAKSI
 JOIN PEGAWAI
 ON TRANSAKSI.ID_PEGAWAI = PEGAWAI.ID_PEGAWAI
 ORDER BY ID_TRANSAKSI DESC;
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Rudi', 'rudi123', 'Rudi Jayadi', 'Rungkut', '083883878', 1);
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Budi', 'budi123', 'Budi Subakti', 'Semolo', '083821238', 1);
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Adi', 'adi123', 'Adi Rochman', 'Semampir', '081982367', 1);
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Ali', 'ali123', 'Ali Rahmat', 'Gubeng', '082873761', 1);
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Gofur', 'gofur123', 'Gofur Jaya', 'Keputih', '085283711', 1);
-
-insert into PEGAWAI(ID_PEGAWAI, USERNAME, PASSWORD, NAMA, ALAMAT, NO_TELP, ROLE)
-values (id_pegawai.nextval, 'Beni', 'beni123', 'Beni Pratama', 'Wonokromr', '0812345664', 1);

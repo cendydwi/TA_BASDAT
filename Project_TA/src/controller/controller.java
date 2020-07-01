@@ -163,5 +163,23 @@ public class controller {
     public void editPegawai(pegawai pegawai) throws SQLException{
         this.koneksi.ManipulasiData("UPDATE PEGAWAI SET USERNAME = '"+pegawai.getUsername()+"', PASSWORD = '"+pegawai.getPassword()+"', NAMA = '"+pegawai.getNama()+"', ALAMAT = '"+pegawai.getAlamat()+"', NO_TELP = '"+pegawai.getNo_telp()+"', ROLE = '"+pegawai.getRole()+"' WHERE ID_PEGAWAI = "+pegawai.getId_pegawai());
     }
+    
+    public Integer getLogin(pegawai pegawai) throws SQLException {
+        Integer hasil = 0;
+        ResultSet rs = this.koneksi.GetData("SELECT * FROM PEGAWAI WHERE USERNAME = '"+pegawai.getUsername()+"' AND PASSWORD = '"+pegawai.getPassword()+"'");
+        while (rs.next()) {
+            hasil++;
+        }
+        return hasil;
+    }
+    
+    public Integer getRoleLogin(pegawai pegawai) throws SQLException {
+        Integer role = 0;
+        ResultSet rs = this.koneksi.GetData("SELECT * FROM PEGAWAI WHERE USERNAME = '"+pegawai.getUsername()+"' AND PASSWORD = '"+pegawai.getPassword()+"'");
+        while (rs.next()) {
+            role = rs.getInt("ROLE");
+        }
+        return role;
+    }
 
 }
